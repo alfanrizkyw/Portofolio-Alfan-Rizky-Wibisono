@@ -830,7 +830,7 @@
             100% { transform: translateX(100%); }
         }
 
-        /* Contact Section */
+        /* Contact Section - 修复点击问题 */
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -846,6 +846,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 25px;
+            pointer-events: none; /* 禁用容器点击事件 */
         }
 
         body.light-mode .contact-item {
@@ -863,6 +864,7 @@
             background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, transparent 100%);
             transform: translateY(-100%);
             transition: transform 0.6s ease;
+            pointer-events: none; /* 禁用伪元素点击事件 */
         }
 
         .contact-item:hover::before {
@@ -879,6 +881,7 @@
             color: var(--silver-light);
             margin-bottom: 25px;
             transition: var(--transition);
+            pointer-events: none; /* 禁用图标点击事件 */
         }
 
         .contact-item:hover .contact-icon {
@@ -893,22 +896,30 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-family: 'Space Grotesk', sans-serif;
+            pointer-events: none; /* 禁用标题点击事件 */
         }
 
         .contact-info {
             font-size: 15px;
             color: var(--silver-medium);
             font-weight: 300;
+            pointer-events: none; /* 禁用容器点击事件 */
         }
 
+        /* 确保链接可以点击 */
         .contact-info a {
             color: var(--silver-light);
             text-decoration: none;
             transition: var(--transition);
+            pointer-events: auto; /* 启用链接点击事件 */
+            position: relative;
+            z-index: 10;
+            display: inline-block;
         }
 
         .contact-info a:hover {
             color: var(--primary-light);
+            text-decoration: underline;
         }
 
         /* Footer */
@@ -1441,9 +1452,9 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <h3 class="contact-title" data-lang="contact-email">Email</h3>
-                        <p class="contact-info">
-                            <a href="mailto:alfanrizky222@gmail.com">alfanrizky222@gmail.com</a>
-                        </p>
+                        <div class="contact-info">
+                            <a href="mailto:alfanrizky222@gmail.com" target="_blank">alfanrizky222@gmail.com</a>
+                        </div>
                     </div>
 
                     <div class="contact-item fade-in-up">
@@ -1451,9 +1462,9 @@
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <h3 class="contact-title">WhatsApp</h3>
-                        <p class="contact-info">
+                        <div class="contact-info">
                             <a href="https://wa.me/qr/OX3CO2NAAIX7H1" target="_blank" data-lang="contact-whatsapp">Chat with Me</a>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="contact-item fade-in-up">
@@ -1461,9 +1472,9 @@
                             <i class="fab fa-instagram"></i>
                         </div>
                         <h3 class="contact-title">Instagram</h3>
-                        <p class="contact-info">
+                        <div class="contact-info">
                             <a href="https://www.instagram.com/fanrwb_/" target="_blank">@fanrwb_</a>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="contact-item fade-in-up">
@@ -1471,9 +1482,9 @@
                             <i class="fab fa-github"></i>
                         </div>
                         <h3 class="contact-title">GitHub</h3>
-                        <p class="contact-info">
+                        <div class="contact-info">
                             <a href="https://github.com/alfanrizkyw" target="_blank">alfanrizkyw</a>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="contact-item fade-in-up">
@@ -1481,9 +1492,9 @@
                             <i class="fab fa-discord"></i>
                         </div>
                         <h3 class="contact-title">Discord</h3>
-                        <p class="contact-info">
+                        <div class="contact-info">
                             <a href="https://discord.com/users/1340206236712308766" target="_blank">1340206236712308766</a>
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
